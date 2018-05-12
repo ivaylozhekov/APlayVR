@@ -28,6 +28,7 @@
     "lint:js": "jshint",
     "lint:sass": "stylelint ./src/**/*.scss",
     "start": "concurrent --kill-others \"npm run start-dev-backend\" \"npm run start-dev\"",
+    "start2": "concurrent --kill-others \"npm run start-prod\" \"npm run start-dev-backend\"",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev",
     "start-dev-backend": "better-npm-run start-dev-backend",
     "start-prod": "npm run build && node express.js",
