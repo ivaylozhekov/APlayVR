@@ -5,6 +5,7 @@ const app = express();
 const portNumber = 3000;
 const sourceDir = 'dist';
 
+
 const server = new http.Server(app);
 
 const targetUrl = "http://localhost:3010";
@@ -28,6 +29,13 @@ proxy.on("error", (error, req, res) => {
   console.error("proxy error", error);
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(express.static('src/assets'));
 app.use(express.static(sourceDir));
 
 if (portNumber) {

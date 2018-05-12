@@ -1,10 +1,6 @@
 import { ADD_ENTITY } from './actions';
 
-const initialState = [{
-    primitiveType: 'box',
-    color: 'blue',
-    position: {x: 0, y: 0, z: -5}
-}];
+const initialState = [];
 
 export default function ASceneReducer(state = initialState, action) {
   switch (action.type) {
