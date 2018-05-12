@@ -6,6 +6,7 @@ import React from 'react';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
+import {addEntityAsync} from './APlayScene/actions';
 
 global.sockets = {
   global: io("", {path: "/ws"}),
@@ -52,6 +53,7 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
+
 export default connect(
   null,
   mapDispatchToProps
