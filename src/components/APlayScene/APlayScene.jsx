@@ -19,7 +19,7 @@ class APlayScene extends React.PureComponent {
         />
         <Entity id="target" />
         <a-entity a-video-player />
-        <a-entity position="0 0 11" gltf-model="models/football_adidas_used/scene.gltf"></a-entity>
+        <a-entity position="0 0 11" gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf"></a-entity>
         <Entity primitive="a-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2000px-Adidas_Logo.svg.png" />
         {sceneEntities.map(entity => (
           <Entity geometry={{primitive: entity.primitiveType}} material={{color: entity.color}} position={entity.position}/>
