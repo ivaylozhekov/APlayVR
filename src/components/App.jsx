@@ -9,6 +9,7 @@ import 'assets/scss/App.scss';
 import io from "socket.io-client"
 import {addEntityAsync} from './APlayScene/actions';
 import APlayScene from './APlayScene/APlayScene';
+import LeapMotion from './LeapMotion';
 
 global.sockets = {
   global: io("", {path: "/ws"}),

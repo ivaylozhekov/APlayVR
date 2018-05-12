@@ -2,7 +2,8 @@ import 'aframe';
 import 'aframe-orbit-controls-component-2';
 import {Entity, Scene,} from 'aframe-react';
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import LeapMotion from '../LeapMotion';
 import '../aframe/test'
 class APlayScene extends React.PureComponent {
   render() {
@@ -54,6 +55,7 @@ class APlayScene extends React.PureComponent {
         <Entity particle-system={{preset: 'snow'}}/>
         <Entity light={{type: 'point'}}/>
         <Entity light={{type: 'spot'}}/>
+        <LeapMotion />
       </Scene>
     );
   }
