@@ -44,8 +44,8 @@ class APlayScene extends React.PureComponent {
         <Entity test={{x: 0, y: 5, z: 5}} />
 
 
-        <a-entity position="0 0.5 11">
-          <a-entity gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf">
+        <a-entity position="0 0.5 -14">
+          <a-entity position="0 0.5 15.3" gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf">
           </a-entity>
           <a-animation attribute="rotation"
              dur="10000"
@@ -66,7 +66,7 @@ class APlayScene extends React.PureComponent {
         {sceneEntities.map(entity => entity)}
         <Entity particle-system={{preset: 'snow'}}/>
         <Entity light={{type: 'point'}} position={{x: 0, y: 15, z: 0}}/>
-        <Entity light={{type: 'spot'}} position={{x: 3, y: 1, z: -13}} rotation={{x: -60, y: 20, z: 0}}/>
+        <Entity light={{type: 'spot'}} position={{x: 3, y: 1, z: -13}} rotation={{x: -60, y: 40, z: 0}}/>
         <Entity light={{type: 'spot'}} position={{x: -5, y: 1, z: -10}} rotation={{x: -60, y: -30, z: 0}}/>
         <LeapMotion />
         <a-plane color="green" height="400" width="400" rotation="-90 0 0" position="0 0 0"></a-plane>
