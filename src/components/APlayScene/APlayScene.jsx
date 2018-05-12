@@ -59,7 +59,7 @@ class APlayScene extends React.PureComponent {
               <Entity light={{type: 'spot', intensity: 0.1}} position={{x: -5, y: 8, z: 5}} rotation={{x: -60, y: -30, z: 0}}/>
           </a-entity>
         </Entity>
-        <Entity id="target" test={{x: 0, y: 5, z: 5}}  />
+        <Entity id="target" test={{x: 0, y: 3, z: -10}}  />
         <Entity test={{x: 0, y: 5, z: 5}} />
         {sceneEntities.map(entity => (
           <Entity geometry={{primitive: entity.primitiveType}} material={{color: entity.color}} position={entity.position}/>
