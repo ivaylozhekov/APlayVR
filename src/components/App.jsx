@@ -1,30 +1,41 @@
-import 'aframe';
-// import 'aframe-particle-system-component';
-import 'aframe-orbit-controls-component-2';
-import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import 'assets/scss/App.scss';
+import APlayScene from './APlayScene/APlayScene';
+import { connect } from 'react-redux'
+import { addEntity } from './APlayScene/actions';
 
 class App extends React.PureComponent {
   render() {
+    const { addEntity } = this.props;
+
     return (
-        <Scene background="color: grey">
-            <Entity
-              id="camera"
-              camera
-              position="0 0 5"
-              orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.25; rotateSpeed:0.14; minDistance:3; maxDistance:15;"
-              mouse-cursor=""
-          />
-          <Entity id="target" />
-          <Entity primitive="a-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2000px-Adidas_Logo.svg.png" />
-          <Entity geometry={{primitive: 'box'}} material={{color: 'red'}} position={{x: 0, y: 0, z: -5}}/>
-          <Entity particle-system={{preset: 'snow'}}/>
-          <Entity light={{type: 'point'}}/>
-          <Entity gltf-model={{src: 'virtualcity.gltf'}}/>
-        </Scene>
+      <React.Fragment>
+        <button
+            style={{
+              position: 'absolute',
+              zIndex: 1000000
+            }}
+            onClick={() => addEntity({
+            primitiveType: 'box',
+            color: 'red',
+            position: {x: 2, y: 0, z: -5}
+          })}>
+            Add a red box
+        </button>
+        <APlayScene></APlayScene>
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    addEntity: entity => {
+      dispatch(addEntity(entity))
+    }
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

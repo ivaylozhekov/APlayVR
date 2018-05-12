@@ -70,7 +70,8 @@
     "aframe": "^0.8.2",
     "aframe-orbit-controls-component-2": "^0.1.14",
     "aframe-react": "^4.4.0",
-    "react-redux": "^5.0.7"
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "postcss": {}
 }
