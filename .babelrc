@@ -1,20 +1,36 @@
 {
   "presets": [
-    ["env", {"modules": false}], // webpack understands the native import syntax, and uses it for tree shaking
-    "react" // Transpile React components to JavaScript
+    [
+      "env"
+    ],
+    "react",
+    "flow",
+    "stage-0"
   ],
   "plugins": [
-    "react-hot-loader/babel", // Enables React code to work with HMR.
+    "react-hot-loader/babel",
+    "transform-runtime",
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "transform-class-properties",
     [
-      "module-resolver", {
-      "root": ["./src"]
-    }
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ]
+      }
     ]
   ],
   "env": {
     "test": {
-      "presets": ["env", "react"],
-      "plugins": ["transform-es2015-modules-commonjs"]
+      "presets": [
+        "env",
+        "react"
+      ],
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
     }
   }
 }
