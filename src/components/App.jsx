@@ -3,10 +3,12 @@ import 'aframe';
 import 'aframe-orbit-controls-component-2';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
+import {connect} from 'react-redux';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
 import {addEntityAsync} from './APlayScene/actions';
+import APlayScene from './APlayScene/APlayScene';
 
 global.sockets = {
   global: io("", {path: "/ws"}),
