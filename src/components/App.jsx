@@ -1,8 +1,9 @@
 import React from 'react';
 import 'assets/scss/App.scss';
 import APlayScene from './APlayScene/APlayScene';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { addEntityAsync } from './APlayScene/actions';
+import LeapMotion from './LeapMotion';
 
 class App extends React.PureComponent {
   render() {
