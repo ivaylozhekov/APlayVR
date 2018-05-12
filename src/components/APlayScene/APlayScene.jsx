@@ -30,12 +30,30 @@ class APlayScene extends React.PureComponent {
         <a-video src="#video" width="16" height="9" position="0 1 -20" autoplay></a-video>
         <Entity id="target" />
         <Entity test={{x: 0, y: 1, z: 2}} />
-        <a-entity position="0 0 11" gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf"></a-entity>
-        <Entity primitive="a-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2000px-Adidas_Logo.svg.png" />
+
+        <a-entity position="0 0 11">
+          <a-entity gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf">
+          </a-entity>
+          <a-animation attribute="rotation"
+             dur="10000"
+             fill="forwards"
+             to="0 360 0"
+             repeat="indefinite"></a-animation>
+        </a-entity>
+        <a-entity>
+          <a-entity primitive="a-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2000px-Adidas_Logo.svg.png" >
+
+          </a-entity>
+          <a-animation attribute="rotation"
+             dur="10000"
+             fill="forwards"
+             to="0 360 0"
+             repeat="indefinite"></a-animation>
+        </a-entity>
         {sceneEntities.map(entity => entity)}
-        <Entity particle-system={{preset: 'snow'}} />
-        <Entity light={{type: 'point'}} />
-        <Entity light={{type: 'spot'}} />
+        <Entity particle-system={{preset: 'snow'}}/>
+        <Entity light={{type: 'point'}}/>
+        <Entity light={{type: 'spot'}}/>
       </Scene>
     );
   }
