@@ -2,7 +2,7 @@ import React from 'react';
 import 'assets/scss/App.scss';
 import APlayScene from './APlayScene/APlayScene';
 import { connect } from 'react-redux'
-import { addEntity } from './APlayScene/actions';
+import { addEntityAsync } from './APlayScene/actions';
 
 class App extends React.PureComponent {
   render() {
@@ -31,7 +31,7 @@ class App extends React.PureComponent {
 const mapDispatchToProps = dispatch => {
   return {
     addEntity: entity => {
-      dispatch(addEntity(entity))
+      dispatch(addEntityAsync(entity))
     }
   }
 }
