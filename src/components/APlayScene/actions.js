@@ -5,10 +5,5 @@ export function addEntity(entity) {
 }
 
 export function addEntityAsync(entity) {
-  return dispatch => {
-    setTimeout(() => {
-      // Yay! Can invoke sync or async actions with `dispatch`
-      dispatch(addEntity(entity));
-    }, 1000);
-  };
+  return dispatch => dispatch(addEntity(entity));
 }

@@ -77,16 +77,29 @@ export default class EventsController {
     this.socket.on("disconnect", this.stopFetching);
 
     this.externalSocket.on("connect", () => console.log("++> External socket connected"));
-    this.externalSocket.on("events", this.updateStream);
+    // this.externalSocket.on("events", this.updateStream);
     this.externalSocket.on("disconnect", this.stopFetching);
   }
 
   init = () => {
-    this.socket.join(this.getRoomName());
+    this.socket
+      .join(this.getRoomName(), async () => {
+        try {
+          const clients = await this.getClientsInRoom();
+
+          if (clients.length === 1) {
+            this.fetchTimeout = setInterval(() => {
+              this.updateStream({description: "Desc " + new Date()})
+            }, 3000)
+          }
+        } catch (e) {
+          throw e;
+        }
+      });
   };
 
   updateStream = (event) => {
-    console.log(">>> stream updating with event");
+    console.log(">>> %s : stream updating with event", new Date());
     this.emit(EV_CLIENT_UPDATE, event);
   };
 
@@ -106,7 +119,8 @@ export default class EventsController {
     const clients = await this.getClientsInRoom();
 
     if (!clients.length) {
-      clearTimeout(this.fetchTimeout);
+      // clearTimeout(this.fetchTimeout);
+      clearInterval(this.fetchTimeout);
       this.fetchTimeout = null;
       this.socket.disconnect();
     }

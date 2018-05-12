@@ -94,6 +94,7 @@
     "aframe": "^0.8.2",
     "aframe-orbit-controls-component-2": "^0.1.14",
     "aframe-react": "^4.4.0",
+    "aframe-text-geometry-component": "^0.5.1",
     "body-parser": "^1.18.2",
     "connect-redis": "^3.3.3",
     "cookie-parser": "^1.4.3",

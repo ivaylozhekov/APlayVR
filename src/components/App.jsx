@@ -15,32 +15,55 @@ global.sockets = {
   events: io("/events", {path: "/ws"})
 };
 
+let i = 0;
+
 class App extends React.PureComponent {
 
   componentWillMount() {
     if (sockets) {
-      sockets.events.on("events/client/update", (data) => console.log(data));
+      sockets.events.on("events/client/update", this.addEventReaction);
 
       sockets.events.emit("events/client/connect")
     }
   }
 
+  addEventReaction = (event) => {
+    const {addEntity} = this.props;
+    const {description} = event;
+
+    console.log({ev: description});
+
+    addEntity(<Entity text={{value: description}} position="0 0 0" />);
+    addEntity(
+      <a-sound src="#ping" autoplay="true" position="0 0 0"></a-sound>
+    );
+    // addEntity(<a-entity sound="src: #ping" autoplay="true" position="0 0 0"></a-entity>);
+
+    i++;
+
+    /* addEntity({
+                 primitiveType: 'box',
+                 color: 'red',
+                 position: {x: 2, y: 0, z: -5}
+               }*/
+  };
+
   render() {
-    const { addEntity } = this.props;
+    const {addEntity} = this.props;
 
     return (
       <React.Fragment>
         <button
-            style={{
-              position: 'absolute',
-              zIndex: 1000000
-            }}
-            onClick={() => addEntity({
-            primitiveType: 'box',
-            color: 'red',
-            position: {x: 2, y: 0, z: -5}
-          })}>
-            Add a red box
+          style={{
+            position: 'absolute',
+            zIndex: 1000000
+          }}
+          onClick={() => addEntity(<Entity
+            geometry={{primitive: "box"}}
+            material={{color: "red"}}
+            position={{x: 2, y: 0, z: -5}}
+          />)}>
+          Add a red box
         </button>
         <APlayScene></APlayScene>
       </React.Fragment>

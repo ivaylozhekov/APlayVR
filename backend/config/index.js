@@ -6,7 +6,7 @@ const JSON_CONFIG = {
     "events": {
       "protocol": "http",
       "hostname": "192.168.112.151",
-      "port": "3003",
+      "port": "3000",
       "pathname": ""
     }
   },
