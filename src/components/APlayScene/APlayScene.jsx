@@ -5,11 +5,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LeapMotion from '../LeapMotion';
 import '../aframe/test';
-import { changeDefaultVideo } from './actions.js';
+import { changeDefaultVideo, requestProducts } from './actions.js';
 
-class APlayScene extends React.PureComponent {
+class APlayScene extends React.Component {
+  componentWillMount() {
+    this.props.onRequestProducts();
+  };
   render() {
-    const { sceneEntities, defaultVideo } = this.props;
+    const { sceneEntities, defaultVideo, products } = this.props;
     return (
       <Scene background="color: black">
         <Entity
@@ -82,14 +85,19 @@ const mapStateToProps = state => {
   return {
     sceneEntities: state.mainScene.sceneEntities,
     defaultVideo: state.mainScene.videoName,
+    products: state.mainScene.products,
   }
 }
 
 const mapDispatchToProps = dispatch => ({
   onChangeDefaultVideo(videoName) {
     dispatch(changeDefaultVideo(videoName))
+  },
+  onRequestProducts: () => {
+    dispatch(requestProducts());
   }
-})
+  
+});
 
 export default connect(
   mapStateToProps,
