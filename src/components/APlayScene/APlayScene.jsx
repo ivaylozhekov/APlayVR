@@ -4,10 +4,12 @@ import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import { connect } from 'react-redux';
 import LeapMotion from '../LeapMotion';
-import '../aframe/test'
+import '../aframe/test';
+import { changeDefaultVideo } from './actions.js';
+
 class APlayScene extends React.PureComponent {
   render() {
-    const { sceneEntities } = this.props;
+    const { sceneEntities, defaultVideo } = this.props;
     return (
       <Scene background="color: black">
         <Entity
@@ -16,13 +18,15 @@ class APlayScene extends React.PureComponent {
           orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.25; rotateSpeed:0.14; minDistance:3; maxDistance:15;"
           mouse-cursor=""
         />
+        {/*The main video*/}
         <a-asset>
           <video id="video1" autoplay="true"
-            src="http://localhost:3000/videos/8084.mkv">
+            src={`http://localhost:3000/videos/${defaultVideo}`}>
           </video>
         </a-asset>
-        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video>
 
+        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video>
+        
         <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
           <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
           <Entity
@@ -59,6 +63,8 @@ class APlayScene extends React.PureComponent {
               <Entity light={{type: 'spot', intensity: 0.1}} position={{x: -5, y: 8, z: 5}} rotation={{x: -60, y: -30, z: 0}}/>
           </a-entity>
         </Entity>
+
+
         <Entity id="target" test={{x: 0, y: 3, z: -10}}  />
         <Entity test={{x: 0, y: 5, z: 5}} />
         {sceneEntities.map(entity => (
@@ -74,10 +80,18 @@ class APlayScene extends React.PureComponent {
 }
 const mapStateToProps = state => {
   return {
-    sceneEntities: state.sceneEntities
+    sceneEntities: state.mainScene.sceneEntities,
+    defaultVideo: state.mainScene.videoName,
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  onChangeDefaultVideo(videoName) {
+    dispatch(changeDefaultVideo(videoName))
+  }
+})
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(APlayScene);

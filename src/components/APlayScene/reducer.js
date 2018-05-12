@@ -1,14 +1,22 @@
-import { ADD_ENTITY } from './actions';
+import { ADD_ENTITY, CHANGE_DEFAULT_VIDEO } from './actions';
 
-const initialState = [];
+const initialState = {
+  sceneEntities: [],
+  videoName: '8084.mp4',
+};
 
 export default function ASceneReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ENTITY:
-      return [
+      return {
+        sceneEntities: action.entity,
         ...state,
-        action.entity
-      ];
+      };
+    case CHANGE_DEFAULT_VIDEO:
+        return {
+          videoName: action.payload,
+          ...state,
+        }
     default:
       return state;
   }
