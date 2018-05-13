@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import LeapMotion from '../LeapMotion';
 import '../aframe/test';
 import {changeDefaultVideo, requestProducts} from './actions.js';
+require('../LeapMotion/leap-hands');
+require('aframe-effects')
 
 const mainVideo = {
   width: 160,
@@ -22,7 +24,6 @@ class APlayScene extends React.Component {
     const {event, sceneEntities, defaultVideo, products} = this.props;
 
     const text = `${event.description}`;
-
     return (
       <Scene background="color: black" effects="godrays" godrays="src: #sun; threshold: 0. 0.33; intensity: 2">
         <a-assets>
@@ -36,7 +37,9 @@ class APlayScene extends React.Component {
           camera
           orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.25; rotateSpeed:0.14; minDistance:3; maxDistance:15;"
           mouse-cursor=""
-        />
+        >
+          <a-entity position="0 -1 -30" leap-hands />
+        </Entity>1
         {/*The main video*/}
         <a-video src="#video1" width={mainVideo.width} height={mainVideo.height} position="0 45 -100"></a-video>
 
