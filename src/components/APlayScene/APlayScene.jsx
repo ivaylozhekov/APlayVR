@@ -184,11 +184,12 @@ class APlayScene extends React.Component {
           {videos.map(video => (
             <React.Fragment>
               <a-asset>
-                <video id={video.fileName} autoplay="true"
+                <video
+                  id={video.fileName} autoplay="true"
                   src={`http://localhost:3000/videos/${video.fileName}`}>
                 </video>
               </a-asset>
-              <a-video src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
+              <a-video muted src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
             </React.Fragment>
           ))}
 
