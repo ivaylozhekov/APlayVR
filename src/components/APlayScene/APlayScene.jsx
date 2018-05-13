@@ -17,7 +17,7 @@ class APlayScene extends React.Component {
       
       <Scene background="color: black">
       <a-obj-model src="http://localhost:3000/models/football_adidas_used/Cafusa_Base_Mesh.obj" mtl="http://localhost:3000/models/football_adidas_used/Cafusa_Base_Mesh.mtl"></a-obj-model>
-      <a-obj-model src="http://localhost:3000/models/house.obj" ></a-obj-model>
+      <a-obj-model src="http://localhost:3000/models/house.obj" position="-1.127 1.475 -11.452"></a-obj-model>
         <Entity
           id="camera"
           camera
@@ -32,10 +32,10 @@ class APlayScene extends React.Component {
           </video>
         </a-asset>
 
-        <a-video src="#video1" width="160" height="90" position="0.936 2.760 -1.210" scale="0.041 0.040 0.950"></a-video>
+        <a-video src="#video1" width="160" height="90" position="-0.152 4.203 -12.553" scale="0.041 0.040 0.950"></a-video>
         
         {/* Video streams */}
-        <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
+        <Entity position={{x:-127.211, y:1.795, z:37.252}} scale={{x:0.08, y:0.08, z:0.08, }}rotation={{x: 0, y: -90, z: 0}}>
           <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
           <Entity
             material={{color: 'white'}}
