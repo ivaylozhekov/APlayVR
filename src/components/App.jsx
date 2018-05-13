@@ -71,7 +71,7 @@ class App extends React.PureComponent {
               position: 'absolute',
               zIndex: 1000000
             }}
-            onClick={() => changeVideo('ref_cam__mls_all-stars_vs._real_madrid.mp4')}>
+            onClick={() => changeVideo('gm6.mp4')}>
             Change Video
         </button>
         <APlayScene></APlayScene>

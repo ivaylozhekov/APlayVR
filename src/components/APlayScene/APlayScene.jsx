@@ -57,8 +57,7 @@ class APlayScene extends React.Component {
       <Scene background="color: black" effects="godrays">
         <a-assets>
           <audio id="goal" src="http://localhost:3000/sounds/goal.mp3" preload="true"></audio>
-          <video id="match1" src="http://localhost:3000/videos/8090.mp4" preload="auto"></video>
-          <video id="video1" autoPlay={false} src={`http://localhost:3000/videos/${defaultVideo}`}></video>
+          <video id="video1" autoPlay="true" src={`http://localhost:3000/videos/${defaultVideo}`}></video>
         </a-assets>
 
         <Entity
@@ -78,10 +77,17 @@ class APlayScene extends React.Component {
           <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
           </a-entity>
+          <a-entity sound="src: #goal" id="goal-sound" />
+        </Entity>
 
         </Entity>
         <a-entity position="0 -10 0">
-          <a-video src="#video1" width={mainVideo.width} height={mainVideo.height} position="0 45 -100"></a-video>
+          <a-video
+            src="#video1"
+            width={mainVideo.width}
+            height={mainVideo.height}
+            position="0 45 -100"
+          ></a-video>
 
           <a-entity visible={showEvent ? "true" : "false"}>
             <a-text
@@ -194,8 +200,9 @@ class APlayScene extends React.Component {
             <React.Fragment>
               <a-asset>
                 <video
-                  id={video.fileName} autoplay="true"
-                  src={`http://localhost:3000/videos/${video.fileName}`}>
+                  id={video.fileName}
+                  src={`http://localhost:3000/videos/${video.fileName}`}
+                >
                 </video>
               </a-asset>
               <a-video cursor-listener={`name: ${video.fileName}`} muted src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
