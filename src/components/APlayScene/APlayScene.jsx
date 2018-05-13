@@ -41,7 +41,7 @@ class APlayScene extends React.Component {
           <a-entity position="0 -1 -30" leap-hands />
         </Entity>1
         {/*The main video*/}
-        <a-video src="#video1" width={mainVideo.width} height={mainVideo.height} position="0 45 -100"></a-video>
+        <a-video src="#video1" width={mainVideo.width} height={mainVideo.height} position="0 45 -100" ></a-video>
 
         <a-entity sound="src: #ping" position="0 0 0" id="goal-sound"></a-entity>
         {event.description && (
