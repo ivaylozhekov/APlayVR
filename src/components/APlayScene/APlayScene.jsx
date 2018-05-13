@@ -9,7 +9,6 @@ import '../aframe/test';
 import {changeDefaultVideo, requestProducts} from './actions.js';
 
 require('../LeapMotion/leap-hands');
-require('aframe-effects');
 
 const mainVideo = {
   width: 160,
@@ -55,11 +54,7 @@ class APlayScene extends React.Component {
     const text = showEvent ? this.getEventDescription(event) : "";
 
     return (
-      <Scene
-        background="color: black"
-        //effects={showEvent ? "godrays" : ""}
-        //godrays="src: #sun; threshold: 0. 0.33; intensity: 2"
-      >
+      <Scene background="color: black">
         <a-assets>
           <audio id="goal" src="http://localhost:3000/sounds/goal.mp3" preload="true"></audio>
           <video id="match1" src="http://localhost:3000/videos/8090.mp4" preload="auto"></video>
@@ -77,7 +72,6 @@ class APlayScene extends React.Component {
         </Entity>
 
         <a-entity position="0 -10 0">
-          {/*The main video*/}
           <a-video src="#video1" width={mainVideo.width} height={mainVideo.height} position="0 45 -100"></a-video>
 
           <a-entity visible={showEvent ? "true" : "false"}>
@@ -104,11 +98,6 @@ class APlayScene extends React.Component {
               width="160"
               color="cyan"
             />
-
-            {/*<a-entity id="sun" geometry="primitive: sphere; radius: 10;" material="shader: flat; transparent: true; color: #ffffff" light="type: directional; color: #FFF; intensity: 0.6"
-            position="0 45 -100"
-            visible="false"
-          />*/}
 
             <a-entity position="0 2 -13">
               <a-entity>
