@@ -57,8 +57,7 @@ class APlayScene extends React.Component {
       <Scene background="color: black">
         <a-assets>
           <audio id="goal" src="http://localhost:3000/sounds/goal.mp3" preload="true"></audio>
-          <video id="match1" src="http://localhost:3000/videos/8090.mp4" preload="auto"></video>
-          <video id="video1" autoPlay={false} src={`http://localhost:3000/videos/${defaultVideo}`}></video>
+          <video id="video1" autoPlay="true" src={`http://localhost:3000/videos/${defaultVideo}`}></video>
         </a-assets>
 
         <Entity
@@ -185,8 +184,10 @@ class APlayScene extends React.Component {
             <React.Fragment>
               <a-asset>
                 <video
-                  id={video.fileName} autoplay="true"
-                  src={`http://localhost:3000/videos/${video.fileName}`}>
+                  id={video.fileName}
+                  autoplay="true"
+                  src={`http://localhost:3000/videos/${video.fileName}`}
+                >
                 </video>
               </a-asset>
               <a-video muted src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
