@@ -129,63 +129,49 @@ class APlayScene extends React.Component {
           </a-entity>
 
           <a-plane color="black" height="160" width="400" position="122 45 0" rotation="0 -90  0"></a-plane>
+
           {/*Adidas Prroducts*/}
-                  <Entity position={{x: -100, y: 0, z: 0}} rotation={{x: 0, y: 90, z: 0}}>
-                    {/*{products.map((product, index) => {
-                      <a-entity position={{x: 10*(4+index), y: 0, z: 0}}>
-                        <Entity
-                      scale={{x: 40, y: 40, z: 10}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/${product.images[0]}`}
-                    />
-                        <Entity
-                      scale={{x: 40, y: 40, z: 10}}
-                      primitive="a-text"
-                      value="Purchase now!"
-                    />
-                    </a-entity>
-                    })};*/}
+          <Entity position={{x: -100, y: 0, z: 0}} rotation={{x: 0, y: 90, z: 0}}>
+            <Entity
+              scale={{x: 40, y: 70, z: 0}}
+              position={{x: 0, y: 50, z: 0}}
+              rotation={{x: 0, y: 10, z: 0}}
+              primitive="a-image"
+              src={`http://localhost:3000/img/test.png`}
+            />
 
+            <Entity
+              scale={{x: 40, y: 70, z: 0}}
+              position={{x: -50, y: 50, z: 20}}
+              rotation={{x: 0, y: 20, z: 0}}
+              primitive="a-image"
+              src={`http://localhost:3000/img/cleats.png`}
+            />
 
-                      <Entity
-                      scale={{x: 40, y: 70, z: 0}}
-                      position={{x: 0, y: 50, z: 0}}
-                      rotation={{x:0, y:10, z: 0}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/img/test.png`}
-                    />
+            <Entity
+              scale={{x: 40, y: 70, z: 0}}
+              position={{x: -100, y: 50, z: 40}}
+              rotation={{x: 0, y: 30, z: 0}}
+              primitive="a-image"
+              src={`http://localhost:3000/img/cleats2.png`}
+            />
 
-                      <Entity
-                      scale={{x: 40, y: 70, z: 0}}
-                      position={{x: -50, y: 50, z: 20}}
-                      rotation={{x:0, y:20, z: 0}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/img/cleats.png`}
-                    />
+            <Entity
+              scale={{x: 40, y: 70, z: 0}}
+              position={{x: -135, y: 50, z: 80}}
+              rotation={{x: 0, y: 80, z: 0}}
+              primitive="a-image"
+              src={`http://localhost:3000/img/cleats3.png`}
+            />
 
-                      <Entity
-                      scale={{x: 40, y: 70, z: 0}}
-                      position={{x: -100, y: 50, z: 40}}
-                      rotation={{x:0, y:30, z: 0}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/img/cleats2.png`}
-                    />
-                      <Entity
-                      scale={{x: 40, y: 70, z: 0}}
-                      position={{x: -135, y: 50, z: 80}}
-                      rotation={{x:0, y:80, z: 0}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/img/cleats3.png`}
-                    />
-                      <Entity
-                      scale={{x: 40, y: 70, z: 0}}
-                      position={{x: -150, y: 50, z: 130}}
-                      rotation={{x:0, y:90, z: 0}}
-                      primitive="a-image"
-                      src={`http://localhost:3000/img/test2.png`}
-                    />
-
-                  </Entity>
+            <Entity
+              scale={{x: 40, y: 70, z: 0}}
+              position={{x: -150, y: 50, z: 130}}
+              rotation={{x: 0, y: 90, z: 0}}
+              primitive="a-image"
+              src={`http://localhost:3000/img/test2.png`}
+            />
+          </Entity>
 
           <Entity
             scale={{x: 20, y: 20, z: 20}}
