@@ -1,3 +1,23 @@
+import { getStore } from '../../index.js';
+import { changeDefaultVideo } from '../APlayScene/actions';
+
+
+AFRAME.registerComponent('cursor-listener', {
+  init: function () {
+
+    var lastIndex = -1;
+    const that = this;
+    var COLORS = ['red', 'green', 'blue'];
+    this.el.addEventListener('click', function (evt) {
+      lastIndex = (lastIndex + 1) % COLORS.length;
+      this.setAttribute('material', 'color', COLORS[lastIndex]);
+      console.log('I was clicked at: ', evt.detail.intersection.point);
+      getStore().dispatch(changeDefaultVideo(that.data.name));
+    });
+  }
+});
+
+/*
 AFRAME.registerComponent('leap-button', {
     schema: { },
     init: function() {
@@ -61,3 +81,4 @@ AFRAME.registerComponent('leap-button', {
 
     }
 });
+*/
