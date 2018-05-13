@@ -79,8 +79,6 @@ class APlayScene extends React.Component {
           </a-entity>
           <a-entity sound="src: #goal" id="goal-sound" />
         </Entity>
-
-        </Entity>
         <a-entity position="0 -10 0">
           <a-video
             src="#video1"
