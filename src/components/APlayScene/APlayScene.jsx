@@ -47,7 +47,7 @@ class APlayScene extends React.Component {
   };
 
   render() {
-    const {event, sceneEntities, defaultVideo, products , videos } = this.props;
+    const {event, sceneEntities, defaultVideo, products, videos} = this.props;
 
     const showEvent = event && event.description;
 
@@ -129,6 +129,7 @@ class APlayScene extends React.Component {
           </a-entity>
 
           <a-plane color="black" height="160" width="400" position="122 45 0" rotation="0 -90  0"></a-plane>
+
           <Entity
             scale={{x: 20, y: 20, z: 20}}
             position={{x: 120, y: 65, z: 20}}
@@ -136,6 +137,7 @@ class APlayScene extends React.Component {
             primitive="a-image"
             src="http://localhost:3000/img/adidas.png"
           />
+
           {videos.map(video => (
             <React.Fragment>
               <a-asset>
@@ -146,21 +148,6 @@ class APlayScene extends React.Component {
               <a-video src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
             </React.Fragment>
           ))}
-
-          <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
-            <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
-            <Entity
-              material={{color: 'white'}}
-              scale={{x: 20, y: 20, z: 20}}
-              position={{x: 40, y: 60, z: 0}}
-              primitive="a-image"
-              src="http://localhost:3000/img/adidas.png"
-            />
-            <a-video src="#match1" width={mainVideo.width / 2} height={mainVideo.height / 2} position="100 45 0"></a-video>
-            <a-video src="#match1" width={mainVideo.width / 2} height={mainVideo.height / 2} position="-20 45 0"></a-video>
-          </Entity>
-
-
 
           <Entity id="target" test={{x: 0, y: 3, z: -10}} />
           <Entity light={{type: 'point'}} position={{x: 0, y: 15, z: 0}} />
