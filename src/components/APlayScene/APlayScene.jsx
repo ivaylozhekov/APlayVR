@@ -14,12 +14,16 @@ class APlayScene extends React.Component {
   render() {
     const { sceneEntities, defaultVideo, products } = this.props;
     return (
+      
       <Scene background="color: black">
+      <a-obj-model src="http://localhost:3000/models/football_adidas_used/Cafusa_Base_Mesh.obj" mtl="http://localhost:3000/models/football_adidas_used/Cafusa_Base_Mesh.mtl"></a-obj-model>
+      <a-obj-model src="http://localhost:3000/models/house.obj" ></a-obj-model>
         <Entity
           id="camera"
           camera
           orbit-controls="autoRotate: false; target: #target; enableDamping: true; dampingFactor: 0.25; rotateSpeed:0.14; minDistance:3; maxDistance:15;"
           mouse-cursor=""
+          position="1.537 1.867 2.151"
         />
         {/*The main video*/}
         <a-asset>
@@ -28,8 +32,9 @@ class APlayScene extends React.Component {
           </video>
         </a-asset>
 
-        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video>
+        <a-video src="#video1" width="160" height="90" position="0.936 2.760 -1.210" scale="0.041 0.040 0.950"></a-video>
         
+        {/* Video streams */}
         <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
           <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
           <Entity

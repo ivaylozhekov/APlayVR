@@ -30,7 +30,7 @@
     "start": "concurrent --kill-others \"npm run start-dev-backend\" \"npm run start-dev\"",
     "start2": "concurrent --kill-others \"npm run start-prod\" \"npm run start-dev-backend\"",
     "start3": "concurrent --kill-others \"npm run start-dev\" \"npm run serve-static\"",
-    "start-dev": "webpack-dev-server --config=configs/webpack/dev",
+    "start-dev": "webpack-dev-server --config=configs/webpack/dev --host 0.0.0.0",
     "start-dev-backend": "better-npm-run start-dev-backend",
     "start-prod": "npm run build && node express.js",
     "serve-static": "node expressStatic.js",
