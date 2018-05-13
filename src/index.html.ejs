@@ -4,6 +4,12 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Hello React!</title>
+
+        <style>
+            .a-enter-vr {
+                position: fixed !important;
+            }
+        </style>
     </head>
     <body>
         <div id="root"></div>
@@ -11,5 +17,12 @@
         <!-- Dependencies -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js" integrity="sha256-wouRkivKKXA3y6AuyFwcDcF50alCNV8LbghfYCH6Z98=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js" integrity="sha256-9hrJxD4IQsWHdNpzLkJKYGiY/SEZFJJSUqyeZPNKd8g=" crossorigin="anonymous"></script>
+        <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+        <script src="//js.leapmotion.com/leap-0.6.4.js"></script>
+        <!-- This gives us the hand-hold and hand-entry plugins, which rigged-hand depends on -->
+        
+        <script src="//js.leapmotion.com/leap-plugins-0.1.10.js"></script>
+        <script src="//leapmotion.github.io/leapjs-rigged-hand/build/leap.rigged-hand-0.1.4.js"></script>
+        <script src='https://cdn.jsdelivr.net/npm/webvr-polyfill@latest/build/webvr-polyfill.js'></script>
     </body>
 </html>

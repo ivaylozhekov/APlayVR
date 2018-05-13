@@ -1,4 +1,4 @@
-import 'aframe';
+// import 'aframe';
 // import 'aframe-particle-system-component';
 import 'aframe-orbit-controls-component-2';
 import {Entity, Scene} from 'aframe-react';
