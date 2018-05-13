@@ -52,6 +52,10 @@ class APlayScene extends React.Component {
           </a-entity>
         )}
 
+        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video>
+        
+        {/*Video Streams*/}
+
         <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
           <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
           <Entity
@@ -92,6 +96,66 @@ class APlayScene extends React.Component {
             }} rotation={{x: -60, y: -30, z: 0}} />
           </a-entity>
         </Entity>
+
+        {/*Adidas Prroducts*/}
+        <Entity position={{x: -100, y: 0, z: 0}} rotation={{x: 0, y: 90, z: 0}}>
+          {/*{products.map((product, index) => {
+            <a-entity position={{x: 10*(4+index), y: 0, z: 0}}>
+              <Entity
+            scale={{x: 40, y: 40, z: 10}}
+            primitive="a-image"
+            src={`http://localhost:3000/${product.images[0]}`}
+          />
+              <Entity
+            scale={{x: 40, y: 40, z: 10}}
+            primitive="a-text"
+            value="Purchase now!"
+          />
+          </a-entity>
+          })};*/}
+
+
+            <Entity
+            scale={{x: 40, y: 70, z: 0}}
+            position={{x: 0, y: 50, z: 0}}
+            rotation={{x:0, y:10, z: 0}}                                       
+            primitive="a-image"
+            src={`http://localhost:3000/img/test.png`}
+          />
+
+            <Entity
+            scale={{x: 40, y: 70, z: 0}}
+            position={{x: -50, y: 50, z: 20}}     
+            rotation={{x:0, y:20, z: 0}}                           
+            primitive="a-image"
+            src={`http://localhost:3000/img/cleats.png`}
+          />
+
+            <Entity
+            scale={{x: 40, y: 70, z: 0}}
+            position={{x: -100, y: 50, z: 40}}
+            rotation={{x:0, y:30, z: 0}}            
+            primitive="a-image"
+            src={`http://localhost:3000/img/cleats2.png`}
+          />
+            <Entity
+            scale={{x: 40, y: 70, z: 0}}
+            position={{x: -135, y: 50, z: 80}}
+            rotation={{x:0, y:80, z: 0}}            
+            primitive="a-image"
+            src={`http://localhost:3000/img/cleats3.png`}
+          />
+            <Entity
+            scale={{x: 40, y: 70, z: 0}}
+            position={{x: -150, y: 50, z: 130}} 
+            rotation={{x:0, y:90, z: 0}}       
+            primitive="a-image"
+            src={`http://localhost:3000/img/test2.png`}
+          />
+
+        </Entity>
+
+
 
 
         <Entity id="target" test={{x: 0, y: 3, z: -10}} />
