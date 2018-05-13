@@ -12,7 +12,8 @@ class APlayScene extends React.Component {
     this.props.onRequestProducts();
   };
   render() {
-    const { sceneEntities, defaultVideo, products } = this.props;
+    const { sceneEntities, defaultVideo, products, videos } = this.props;
+    console.log(defaultVideo);
     return (
       <Scene background="color: black">
         <Entity
@@ -22,35 +23,34 @@ class APlayScene extends React.Component {
           mouse-cursor=""
         />
         {/*The main video*/}
-        <a-asset>
+         <a-asset>
           <video id="video1" autoplay="true"
             src={`http://localhost:3000/videos/${defaultVideo}`}>
           </video>
         </a-asset>
 
-        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video>
+        <a-video src="#video1" width="160" height="90" position="0 45 -100"></a-video> 
         
-        <Entity position={{x: 120, y: 0, z: -40}} rotation={{x: 0, y: -90, z: 0}}>
-          <a-plane color="black" height="160" width="400" position="0 45 -2"></a-plane>
+         
+           <a-plane color="black" height="160" width="400" position="122 45 0" rotation="0 -90  0"></a-plane> 
           <Entity
-            material={{color: 'white'}}
             scale={{x: 20, y: 20, z: 20}}
-            position={{x: 40, y: 60, z: 0}}
+            position={{x: 120, y: 65, z: 20}}
+            rotation={{x:0, y: -90, z: 0}}
             primitive="a-image"
             src="http://localhost:3000/img/adidas.png"
           />
-          <a-asset>
-            <video id="video2" autoplay="true"
-              src="http://localhost:3000/videos/8090.mp4">
-            </video>
-          </a-asset>
-          <a-video src="#video2" width={160/2} height={90/2} position="100 45 0"></a-video>
-          <a-asset>
-            <video id="video3" autoplay="true"
-              src="http://localhost:3000/videos/8088.mkv">
-            </video>
-          </a-asset>
-          <a-video src="#video3" width={160/2} height={90/2} position="-20 45 0" ></a-video>
+          {videos.map(video => (
+            <React.Fragment>
+              <a-asset>
+                <video id={video.fileName} autoplay="true"
+                  src={`http://localhost:3000/videos/${video.fileName}`}>
+                </video>
+              </a-asset>
+              <a-video src={`#${video.fileName}`} width={160/4} height={90/4} position={video.position} rotation={video.rotation}></a-video>
+            </React.Fragment>
+          ))}
+          
           <a-entity position="40 0 90">
             <a-entity>
             <a-entity position="0 5.5 15.3" gltf-model="http://localhost:3000/models/football_adidas_used/scene.gltf">
@@ -65,18 +65,19 @@ class APlayScene extends React.Component {
               <Entity light={{type: 'spot', intensity: 0.1}} position={{x: 3, y: 8, z: 2}} rotation={{x: -60, y: 40, z: 0}}/>
               <Entity light={{type: 'spot', intensity: 0.1}} position={{x: -5, y: 8, z: 5}} rotation={{x: -60, y: -30, z: 0}}/>
           </a-entity>
-        </Entity>
 
+        
+
+        {/* <a-sky src="http://localhost:3000/img/room.jpg" ></a-sky>  */}
 
         <Entity id="target" test={{x: 0, y: 3, z: -10}}  />
-        <Entity test={{x: 0, y: 5, z: 5}} />
+         
         {sceneEntities.map(entity => (
           <Entity geometry={{primitive: entity.primitiveType}} material={{color: entity.color}} position={entity.position}/>
         ))}
-        <Entity particle-system={{preset: 'snow'}}/>
         <Entity light={{type: 'point'}} position={{x: 0, y: 15, z: 0}}/>
         <LeapMotion />
-        <a-plane color="green" height="400" width="400" rotation="-90 0 0" position="0 0 0"></a-plane>
+        <a-plane color="green" height="400" width="400" rotation="-90 0 0" position="0 0 0"></a-plane>  
       </Scene>
     );
   }
@@ -86,6 +87,7 @@ const mapStateToProps = state => {
     sceneEntities: state.mainScene.sceneEntities,
     defaultVideo: state.mainScene.videoName,
     products: state.mainScene.products,
+    videos: state.mainScene.videos
   }
 }
 

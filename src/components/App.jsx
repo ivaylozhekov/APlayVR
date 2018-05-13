@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
-import {addEntityAsync} from './APlayScene/actions';
+import {changeDefaultVideo} from './APlayScene/actions';
 import APlayScene from './APlayScene/APlayScene';
 import LeapMotion from './LeapMotion';
 
@@ -27,7 +27,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const { addEntity } = this.props;
+    const { changeVideo } = this.props;
 
     return (
       <React.Fragment>
@@ -36,12 +36,8 @@ class App extends React.PureComponent {
               position: 'absolute',
               zIndex: 1000000
             }}
-            onClick={() => addEntity({
-            primitiveType: 'box',
-            color: 'red',
-            position: {x: 2, y: 0, z: -5}
-          })}>
-            Add a red box
+            onClick={() => changeVideo('ref_cam__mls_all-stars_vs._real_madrid.mp4')}>
+            Change Video
         </button>
         <APlayScene></APlayScene>
       </React.Fragment>
@@ -51,8 +47,8 @@ class App extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addEntity: entity => {
-      dispatch(addEntityAsync(entity))
+    changeVideo: video => {
+      dispatch(changeDefaultVideo(video))
     }
   }
 }
