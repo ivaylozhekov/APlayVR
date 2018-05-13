@@ -1,7 +1,7 @@
 AFRAME.registerComponent('leap-hands', {
     schema: { },
     init: function() {
-        const scene = this.el.sceneEl.object3D;
+        const scene = this.el.object3D;
         (window.controller = new Leap.Controller)
         .use('riggedHand', {
             parent: scene,

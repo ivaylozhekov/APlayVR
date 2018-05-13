@@ -7,74 +7,72 @@ import {connect} from 'react-redux';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
-import {addEntityAsync, addEventAsync, removeEventAsync} from './APlayScene/actions';
+import {changeDefaultVideo, addEntityAsync, addEventAsync, removeEventAsync} from './APlayScene/actions';
 import APlayScene from './APlayScene/APlayScene';
 import LeapMotion from './LeapMotion';
 
-/*global.sockets = {
+global.sockets = {
   global: io("", {path: "/ws"}),
   events: io("/events", {path: "/ws"})
-};*/
+};
 
-let i = 0;
 let sound;
 let eventTimeout;
 
 class App extends React.PureComponent {
 
   componentWillMount() {
-    /*if (sockets) {
+    if (sockets) {
       sockets.events.on("events/client/update", this.addEventReaction);
-
       sockets.events.emit("events/client/connect")
-    }*/
+    }
   }
 
   componentDidMount() {
     sound = document.querySelector("#goal-sound");
-
-    setInterval(() => {
-      // sound.components.sound.playSound()
-
-      this.addEventReaction({
-        description: "Goal! " + new Date()
-      })
-    }, 7000)
   }
 
-
   addEventReaction = (event) => {
-    const {addEvent, removeEvent} = this.props;
-    const {description} = event;
+    this.addEventNotification(event);
+  };
 
-    removeEvent();
+  addEventNotification = (event) => {
+    const {addEvent} = this.props;
+
     clearTimeout(eventTimeout);
     eventTimeout = null;
 
     addEvent(event);
 
+    if (sound) {
+      sound.components.sound.playSound();
+    }
+
+    this.dismissEventNotification()
+  };
+
+  dismissEventNotification = () => {
+    const {removeEvent} = this.props;
     eventTimeout = setTimeout(() => {
-      removeEvent()
-    }, 3000)
-    // sound.components.sound.playSound();
+      removeEvent();
+      if (sound) {
+        sound.components.sound.stopSound();
+      }
+    }, 5100);
   };
 
   render() {
-    const {addEntity} = this.props;
+    const {changeVideo, addEntity } = this.props;
 
     return (
       <React.Fragment>
         <button
-          style={{
-            position: 'absolute',
-            zIndex: 1000000
-          }}
-          onClick={() => addEntity(<Entity
-            geometry={{primitive: "box"}}
-            material={{color: "red"}}
-            position={{x: 2, y: 0, z: -5}}
-          />)}>
-          Add a red box
+            style={{
+              position: 'absolute',
+              zIndex: 1000000
+            }}
+            onClick={() => changeVideo('ref_cam__mls_all-stars_vs._real_madrid.mp4')}>
+            Change Video
         </button>
         <APlayScene></APlayScene>
       </React.Fragment>
@@ -84,8 +82,8 @@ class App extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addEntity: entity => {
-      dispatch(addEntityAsync(entity))
+    changeVideo: video => {
+      dispatch(changeDefaultVideo(video))
     },
     addEvent: event => {
       dispatch(addEventAsync(event))

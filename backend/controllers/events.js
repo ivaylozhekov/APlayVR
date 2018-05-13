@@ -74,11 +74,11 @@ export default class EventsController {
     this.externalSocket = SocketIoClient(url.format(config.api.events));
 
     this.socket.on(EV_CLIENT_CONNECT, this.init);
-    this.socket.on("disconnect", this.stopFetching);
+    // this.socket.on("disconnect", this.stopFetching);
 
     this.externalSocket.on("connect", () => console.log("++> External socket connected"));
-    // this.externalSocket.on("events", this.updateStream);
-    this.externalSocket.on("disconnect", this.stopFetching);
+    this.externalSocket.on("events", this.throttledUpdate);
+    // this.externalSocket.on("disconnect", this.stopFetching);
   }
 
   init = () => {
@@ -86,12 +86,7 @@ export default class EventsController {
       .join(this.getRoomName(), async () => {
         try {
           const clients = await this.getClientsInRoom();
-
-          if (clients.length === 1) {
-            /*this.fetchTimeout = setInterval(() => {
-              this.updateStream({description: "Desc " + new Date()})
-            }, 7000)*/
-          }
+          console.log("++> Client connected");
         } catch (e) {
           throw e;
         }
@@ -99,9 +94,13 @@ export default class EventsController {
   };
 
   updateStream = (event) => {
-    console.log(">>> %s : stream updating with event", new Date());
-    this.emit(EV_CLIENT_UPDATE, event);
+    if (event.type === "GOAL") {
+      console.log(">>> %s : stream updating with event", new Date().toUTCString());
+      this.emit(EV_CLIENT_UPDATE, event);
+    }
   };
+
+  throttledUpdate = _.throttle(this.updateStream, 10000);
 
   getClientsInRoom = () => new Promise((res) => {
     this.namespace
@@ -119,7 +118,6 @@ export default class EventsController {
     const clients = await this.getClientsInRoom();
 
     if (!clients.length) {
-      // clearTimeout(this.fetchTimeout);
       clearInterval(this.fetchTimeout);
       this.fetchTimeout = null;
       this.socket.disconnect();
