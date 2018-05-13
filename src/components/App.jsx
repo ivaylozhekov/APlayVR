@@ -7,46 +7,56 @@ import {connect} from 'react-redux';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
-import {addEntityAsync} from './APlayScene/actions';
+import {addEntityAsync, addEventAsync, removeEventAsync} from './APlayScene/actions';
 import APlayScene from './APlayScene/APlayScene';
 import LeapMotion from './LeapMotion';
 
-global.sockets = {
+/*global.sockets = {
   global: io("", {path: "/ws"}),
   events: io("/events", {path: "/ws"})
-};
+};*/
 
 let i = 0;
+let sound;
+let eventTimeout;
 
 class App extends React.PureComponent {
 
   componentWillMount() {
-    if (sockets) {
+    /*if (sockets) {
       sockets.events.on("events/client/update", this.addEventReaction);
 
       sockets.events.emit("events/client/connect")
-    }
+    }*/
   }
 
+  componentDidMount() {
+    sound = document.querySelector("#goal-sound");
+
+    setInterval(() => {
+      // sound.components.sound.playSound()
+
+      this.addEventReaction({
+        description: "Goal! " + new Date()
+      })
+    }, 7000)
+  }
+
+
   addEventReaction = (event) => {
-    const {addEntity} = this.props;
+    const {addEvent, removeEvent} = this.props;
     const {description} = event;
 
-    console.log({ev: description});
+    removeEvent();
+    clearTimeout(eventTimeout);
+    eventTimeout = null;
 
-    addEntity(<Entity text={{value: description}} position="0 0 0" />);
-    addEntity(
-      <a-sound src="#ping" autoplay="true" position="0 0 0"></a-sound>
-    );
-    // addEntity(<a-entity sound="src: #ping" autoplay="true" position="0 0 0"></a-entity>);
+    addEvent(event);
 
-    i++;
-
-    /* addEntity({
-                 primitiveType: 'box',
-                 color: 'red',
-                 position: {x: 2, y: 0, z: -5}
-               }*/
+    eventTimeout = setTimeout(() => {
+      removeEvent()
+    }, 3000)
+    // sound.components.sound.playSound();
   };
 
   render() {
@@ -76,6 +86,12 @@ const mapDispatchToProps = dispatch => {
   return {
     addEntity: entity => {
       dispatch(addEntityAsync(entity))
+    },
+    addEvent: event => {
+      dispatch(addEventAsync(event))
+    },
+    removeEvent: () => {
+      dispatch(removeEventAsync())
     }
   }
 }
