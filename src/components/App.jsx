@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import 'assets/scss/App.scss';
 
 import io from "socket.io-client"
-import {changeDefaultVideo} from './APlayScene/actions';
+import {changeDefaultVideo, addEntityAsync, addEventAsync, removeEventAsync} from './APlayScene/actions';
 import APlayScene from './APlayScene/APlayScene';
 import LeapMotion from './LeapMotion';
 
@@ -16,18 +16,53 @@ global.sockets = {
   events: io("/events", {path: "/ws"})
 };
 
+let sound;
+let eventTimeout;
+
 class App extends React.PureComponent {
 
   componentWillMount() {
     if (sockets) {
-      sockets.events.on("events/client/update", (data) => console.log(data));
-
+      sockets.events.on("events/client/update", this.addEventReaction);
       sockets.events.emit("events/client/connect")
     }
   }
 
+  componentDidMount() {
+    sound = document.querySelector("#goal-sound");
+  }
+
+  addEventReaction = (event) => {
+    this.addEventNotification(event);
+  };
+
+  addEventNotification = (event) => {
+    const {addEvent} = this.props;
+
+    clearTimeout(eventTimeout);
+    eventTimeout = null;
+
+    addEvent(event);
+
+    if (sound) {
+      sound.components.sound.playSound();
+    }
+
+    this.dismissEventNotification()
+  };
+
+  dismissEventNotification = () => {
+    const {removeEvent} = this.props;
+    eventTimeout = setTimeout(() => {
+      removeEvent();
+      if (sound) {
+        sound.components.sound.stopSound();
+      }
+    }, 5100);
+  };
+
   render() {
-    const { changeVideo } = this.props;
+    const {changeVideo, addEntity } = this.props;
 
     return (
       <React.Fragment>
@@ -49,6 +84,12 @@ const mapDispatchToProps = dispatch => {
   return {
     changeVideo: video => {
       dispatch(changeDefaultVideo(video))
+    },
+    addEvent: event => {
+      dispatch(addEventAsync(event))
+    },
+    removeEvent: () => {
+      dispatch(removeEventAsync())
     }
   }
 }

@@ -4,3 +4,6 @@ node_modules/
 tests/__coverage__/
 *.mp*
 *.mk*
+
+__tmp/
+__tmp2/

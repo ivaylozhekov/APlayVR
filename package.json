@@ -27,13 +27,11 @@
     "lint": "npm run lint:js && npm run lint:sass",
     "lint:js": "jshint",
     "lint:sass": "stylelint ./src/**/*.scss",
-    "start": "concurrent --kill-others \"npm run start-dev-backend\" \"npm run start-dev\"",
-    "start2": "concurrent --kill-others \"npm run start-prod\" \"npm run start-dev-backend\"",
-    "start3": "concurrent --kill-others \"npm run start-dev\" \"npm run serve-static\"",
-    "start-dev": "webpack-dev-server --config=configs/webpack/dev",
+    "start": "concurrent --kill-others \"npm run start-dev-backend\" \"npm run start-dev-webpack\" \"npm run serve-static\"",
+    "start-dev-webpack": "webpack-dev-server --config=configs/webpack/dev",
     "start-dev-backend": "better-npm-run start-dev-backend",
     "start-prod": "npm run build && node express.js",
-    "serve-static": "node expressStatic.js",
+    "serve-static": "node express.js",
     "test": "jest --watch --coverage --config=configs/jest.json"
   },
   "betterScripts": {
@@ -92,9 +90,11 @@
   },
   "dependencies": {
     "aframe": "^0.8.2",
+    "aframe-effects": "^0.8.0",
     "aframe-leap-hands": "^0.7.2",
     "aframe-orbit-controls-component-2": "^0.1.14",
     "aframe-react": "^4.4.0",
+    "aframe-text-geometry-component": "^0.5.1",
     "body-parser": "^1.18.2",
     "connect-redis": "^3.3.3",
     "cookie-parser": "^1.4.3",

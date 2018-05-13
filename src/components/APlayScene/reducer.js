@@ -1,8 +1,8 @@
-import { ADD_ENTITY, CHANGE_DEFAULT_VIDEO, RECEIVED_PRODUCTS } from './actions';
+import {ADD_ENTITY, CHANGE_DEFAULT_VIDEO, RECEIVED_PRODUCTS} from './actions';
 
 const initialState = {
   sceneEntities: [],
-  videoName: '8084.mkv',
+  videoName: '8084.mp4',
   products: [],
   videos: [{
     fileName: '8082.mkv',
