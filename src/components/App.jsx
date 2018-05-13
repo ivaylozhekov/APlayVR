@@ -66,14 +66,6 @@ class App extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <button
-            style={{
-              position: 'absolute',
-              zIndex: 1000000
-            }}
-            onClick={() => changeVideo('gm6.mp4')}>
-            Change Video
-        </button>
         <APlayScene></APlayScene>
       </React.Fragment>
     );
