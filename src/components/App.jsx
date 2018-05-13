@@ -29,7 +29,6 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    sound = document.querySelector("#goal-sound");
   }
 
   addEventReaction = (event) => {
@@ -44,10 +43,6 @@ class App extends React.PureComponent {
 
     addEvent(event);
 
-    if (sound) {
-      sound.components.sound.playSound();
-    }
-
     this.dismissEventNotification()
   };
 
@@ -55,9 +50,6 @@ class App extends React.PureComponent {
     const {removeEvent} = this.props;
     eventTimeout = setTimeout(() => {
       removeEvent();
-      if (sound) {
-        sound.components.sound.stopSound();
-      }
     }, 5100);
   };
 

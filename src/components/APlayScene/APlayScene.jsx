@@ -57,7 +57,6 @@ class APlayScene extends React.Component {
       <Scene background="color: black" effects="godrays">
         <a-assets>
           <audio id="goal" src="http://localhost:3000/sounds/goal.mp3" preload="true"></audio>
-          <video id="video1" autoPlay="true" src={`http://localhost:3000/videos/${defaultVideo}`}></video>
         </a-assets>
 
         <Entity
@@ -68,23 +67,23 @@ class APlayScene extends React.Component {
         >
           <a-entity position="0 -1 -30" leap-hands />
           <a-entity cursor="fuse: true; fuseTimeout: 500"
-              position="0 0 -1"
-              geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-              material="color: blue; shader: flat"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: blue; shader: flat"
           >
-          <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
-             fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
-          <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
-             fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+            <a-animation begin="click" easing="ease-in" attribute="scale" dur="150"
+              fill="forwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="1500"
+              fill="backwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
           </a-entity>
-          <a-entity sound="src: #goal" id="goal-sound" />
         </Entity>
         <a-entity position="0 -10 0">
           <a-video
-            src="#video1"
+            src={`http://localhost:3000/videos/${defaultVideo}`}
             width={mainVideo.width}
             height={mainVideo.height}
             position="0 45 -100"
+            muted
           ></a-video>
 
           <a-entity visible={showEvent ? "true" : "false"}>
@@ -201,10 +200,17 @@ class APlayScene extends React.Component {
                   id={video.fileName}
                   autoPlay="true"
                   src={`/videos/${video.fileName}`}
+                  muted
                 >
                 </video>
               </a-asset>
-              <a-video cursor-listener={`name: ${video.fileName}`} muted src={`#${video.fileName}`} width={160 / 2} height={90 / 2} position={video.position} rotation={video.rotation}></a-video>
+              <a-video
+                cursor-listener={`name: ${video.fileName}`}
+                src={`#${video.fileName}`}
+                width={160 / 2} height={90 / 2}
+                position={video.position}
+                rotation={video.rotation}
+              ></a-video>
             </React.Fragment>
           ))}
 
