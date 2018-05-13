@@ -2,38 +2,38 @@ import {ADD_ENTITY, CHANGE_DEFAULT_VIDEO, RECEIVED_PRODUCTS} from './actions';
 
 const initialState = {
   sceneEntities: [],
-  videoName: 'ref_cam.mp4',
+  videoName: 'match.mp4',
   products: [],
   videos: [{
-    fileName: '8082.mkv',
+    fileName: 'ref_cam.mp4',
     position: '120 60 110',
     rotation: '0 -90 0'
   }, {
-    fileName: '8084.mkv',
+    fileName: 'gm1.mp4',
     position: '120 60 60',
     rotation: '0 -90 0'
   }, {
-    fileName: '8086.mkv',
+    fileName: 'gm2.mp4',
     position: '120 60 -70',
     rotation: '0 -90 0'
   }, {
-    fileName: '8088.mkv',
+    fileName: 'gm3.mp4',
     position: '120 60 -20',
     rotation: '0 -90 0'
   }, {
-    fileName: '8092.mkv',
+    fileName: 'gm4.mp4',
     position: '120 30 110',
     rotation: '0 -90 0'
   }, {
-    fileName: '8094.mkv',
+    fileName: 'gm5.mp4',
     position: '120 30 60',
     rotation: '0 -90 0'
   }, {
-    fileName: '8090.mp4',
+    fileName: 'gm6.mp4',
     position: '120 30 -70',
     rotation: '0 -90 0'
   }, {
-    fileName: 'ref_cam__mls_all-stars_vs._real_madrid.mp4',
+    fileName: 'gm7.mp4',
     position: '120 30 -20',
     rotation: '0 -90 0'
   }]
