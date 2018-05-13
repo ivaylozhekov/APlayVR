@@ -7,6 +7,7 @@ import APlayApp from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
+
 const store = createStore(APlayApp, applyMiddleware(thunk));
 const rootEl = document.getElementById("root");
 
@@ -22,6 +23,10 @@ const renderComponent = (Component) => {
 };
 
 renderComponent(App);
+
+export const getStore = () => {
+  return store;
+}
 
 // Hot Module Replacement API
 if (module.hot) {

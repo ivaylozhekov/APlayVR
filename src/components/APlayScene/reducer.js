@@ -32,10 +32,6 @@ const initialState = {
     fileName: '8090.mp4',
     position: '120 30 -70',
     rotation: '0 -90 0'
-  }, {
-    fileName: 'ref_cam__mls_all-stars_vs._real_madrid.mp4',
-    position: '120 30 -20',
-    rotation: '0 -90 0'
   }]
 };
 
