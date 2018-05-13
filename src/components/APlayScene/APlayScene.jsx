@@ -179,7 +179,7 @@ class APlayScene extends React.Component {
 
           <Entity
             scale={{x: 20, y: 20, z: 20}}
-            position={{x: 120, y: 65, z: 20}}
+            position={{x: 120, y: 45, z: 20}}
             rotation={{x: 0, y: -90, z: 0}}
             primitive="a-image"
             src="http://localhost:3000/img/adidas.png"
@@ -190,11 +190,12 @@ class APlayScene extends React.Component {
               <a-asset>
                 <video
                   id={video.fileName}
-                  src={`http://localhost:3000/videos/${video.fileName}`}
+                  autoPlay="true"
+                  src={`/videos/${video.fileName}`}
                 >
                 </video>
               </a-asset>
-              <a-video muted src={`#${video.fileName}`} width={160 / 4} height={90 / 4} position={video.position} rotation={video.rotation}></a-video>
+              <a-video muted src={`#${video.fileName}`} width={160 / 2} height={90 / 2} position={video.position} rotation={video.rotation}></a-video>
             </React.Fragment>
           ))}
 
