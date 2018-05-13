@@ -88,9 +88,9 @@ export default class EventsController {
           const clients = await this.getClientsInRoom();
 
           if (clients.length === 1) {
-            this.fetchTimeout = setInterval(() => {
+            /*this.fetchTimeout = setInterval(() => {
               this.updateStream({description: "Desc " + new Date()})
-            }, 3000)
+            }, 7000)*/
           }
         } catch (e) {
           throw e;
